@@ -1,0 +1,149 @@
+<robot name="fourjoints">
+  <link name="base_link">
+    <inertial>
+      <origin xyz="0.0035506 -0.00014959200000000001 0.024519000000000013" rpy="0 0 -1.5707963267948966"/>
+      <mass value="2.5751"/>
+      <inertia ixx="0.004051489764137304" ixy="-2.0525354991945143e-06" ixz="-1.200186769383287e-05" iyy="0.004466379288694287" iyz="0.00011702292411912923" izz="0.002537512875376926"/>
+    </inertial>
+  </link>
+  <link name="link_1">
+    <inertial>
+      <origin xyz="-0.004106499999999999 -0.02810980000000001 -0.0008360000000000034" rpy="0 0 -1.5707963267948966"/>
+      <mass value="2.1623"/>
+      <inertia ixx="0.002675989970439473" ixy="6.426984653122192e-05" ixz="-6.447456052305588e-06" iyy="0.0021990073364667796" iyz="-1.5695577440979572e-05" izz="0.002366627191660443"/>
+    </inertial>
+  </link>
+  <joint name="joint_1" type="revolute">
+    <origin xyz="0.0216 -0.040549999999999996 0" rpy="0 0 0"/>
+    <axis xyz="0.0 -1.0 0.0"/>
+    <parent link="base_link"/>
+    <child link="link_1"/>
+    <limit effort="50000" lower="-0.7853981633974483" upper="2.007128639793479" velocity="120.0"/>
+    <dynamics damping="2.0" friction="0.0"/>
+  </joint>
+  <link name="link_2">
+    <inertial>
+      <origin xyz="-0.003963499999999998 -7.010000000000349e-05 -0.03753499999999993" rpy="0 0 -1.5707963267948966"/>
+      <mass value="1.7731"/>
+      <inertia ixx="0.005229204654206729" ixy="4.628243459077994e-06" ixz="-3.2636330686460046e-06" iyy="0.0029659325947175245" iyz="0.0009467254134739666" izz="0.00327641680237346"/>
+    </inertial>
+  </link>
+  <joint name="joint_2" type="revolute">
+    <origin xyz="-0.0473 -0.03310000000000001 -0.009000000000000008" rpy="0 0 0"/>
+    <axis xyz="-1.0 0.0 0.0"/>
+    <parent link="link_1"/>
+    <child link="link_2"/>
+    <limit effort="50000" lower="-0.17453292519943295" upper="1.9547687622336491" velocity="120.0"/>
+    <dynamics damping="2.0" friction="0.0"/>
+  </joint>
+  <link name="link_3">
+    <inertial>
+      <origin xyz="0.0024329000000000017 0.01233370000000001 -0.038242000000000054" rpy="0 0 -1.5707963267948966"/>
+      <mass value="2.1635"/>
+      <inertia ixx="0.003977864038008573" ixy="-2.0706800781267456e-06" ixz="0.00012771514554905494" iyy="0.0037304828460840533" iyz="1.0430951778634928e-05" izz="0.003698882105935934"/>
+    </inertial>
+  </link>
+  <joint name="ft_1" type="fixed">
+    <origin xyz="0.036699999999999997 0 -0.08969999999999995" rpy="0 0 0"/>
+    <parent link="link_2"/>
+    <child link="link_3"/>
+    <dynamics damping="0.1"/>
+  </joint>
+  <link name="link_4">
+    <inertial>
+      <origin xyz="-0.004106499999999999 -0.02810980000000001 -0.0008360000000000034" rpy="0 0 -1.5707963267948966"/>
+      <mass value="2.1623"/>
+      <inertia ixx="0.002675989970439473" ixy="6.426984653122192e-05" ixz="-6.447456052305588e-06" iyy="0.0021990073364667796" iyz="-1.5695577440979572e-05" izz="0.002366627191660443"/>
+    </inertial>
+  </link>
+  <joint name="joint_3" type="revolute">
+    <origin xyz="0.0216 -0.040549999999999996 0" rpy="0 0 0"/>
+    <axis xyz="0.0 -1.0 0.0"/>
+    <parent link="link_3"/>
+    <child link="link_4"/>
+    <limit effort="50000" lower="-0.7853981633974483" upper="2.007128639793479" velocity="120.0"/>
+    <dynamics damping="2.0" friction="0.0"/>
+  </joint>
+  <link name="link_5">
+    <inertial>
+      <origin xyz="-0.003963499999999998 -7.010000000000349e-05 -0.03753499999999993" rpy="0 0 -1.5707963267948966"/>
+      <mass value="1.7731"/>
+      <inertia ixx="0.005229204654206729" ixy="4.628243459077994e-06" ixz="-3.2636330686460046e-06" iyy="0.0029659325947175245" iyz="0.0009467254134739666" izz="0.00327641680237346"/>
+    </inertial>
+  </link>
+  <joint name="joint_4" type="revolute">
+    <origin xyz="-0.0473 -0.03310000000000001 -0.009000000000000008" rpy="0 0 0"/>
+    <axis xyz="-1.0 0.0 0.0"/>
+    <parent link="link_4"/>
+    <child link="link_5"/>
+    <limit effort="50000" lower="-0.17453292519943295" upper="1.9547687622336491" velocity="120.0"/>
+    <dynamics damping="2.0" friction="0.0"/>
+  </joint>
+  <link name="link_6">
+    <inertial>
+      <origin xyz="0.0006180999999999999 7.079999999998199e-05 0.003514000000000017" rpy="0 0 -1.5707963267948966"/>
+      <mass value="0.17874"/>
+      <inertia ixx="0.00023837060598027492" ixy="1.5972601165325875e-07" ixz="2.851962872955676e-06" iyy="0.00018229756818021977" iyz="-1.2898142814635283e-06" izz="0.0003645245458529223"/>
+    </inertial>
+  </link>
+  <joint name="ft_2" type="fixed">
+    <origin xyz="0.036699999999999997 0 -0.08969999999999995" rpy="0 0 0"/>
+    <parent link="link_5"/>
+    <child link="link_6"/>
+    <dynamics damping="0.1"/>
+  </joint>
+  <gazebo reference="ft_1">
+    <preserveFixedJoint>true</preserveFixedJoint>
+    <!-- For compatibility with SDFormat < 4.4 -->
+    <disableFixedJointLumping>true</disableFixedJointLumping>
+  </gazebo>
+  <gazebo reference="ft_1">
+    <sensor name="ft_1" type="force_torque">
+      <always_on>1</always_on>
+      <update_rate>100</update_rate>
+      <force_torque>
+        <frame>sensor</frame>
+        <measure_direction>parent_to_child</measure_direction>
+      </force_torque>
+      <pose>0.0 0.0 0.022299999999999986 0.0 -0.0 -2.094395210586932</pose>
+      <plugin name="right_foot_rear_ft_plugin" filename="libgazebo_yarp_forcetorque.so">
+        <yarpConfigurationFile>model://iCub/conf_icub3/FT/gazebo_icub_right_foot_rear_ft.ini</yarpConfigurationFile>
+      </plugin>
+    </sensor>
+  </gazebo>
+  <sensor name="ft_1" type="force_torque">
+    <parent joint="ft_1"/>
+    <force_torque>
+      <frame>sensor</frame>
+      <measure_direction>parent_to_child</measure_direction>
+    </force_torque>
+    <origin rpy="0.0 -0.0 -2.094395210586932" xyz="0.0 0.0 0.022299999999999986"/>
+  </sensor>
+  <gazebo reference="ft_2">
+    <preserveFixedJoint>true</preserveFixedJoint>
+    <!-- For compatibility with SDFormat < 4.4 -->
+    <disableFixedJointLumping>true</disableFixedJointLumping>
+  </gazebo>
+  <gazebo reference="ft_2">
+    <sensor name="ft_2" type="force_torque">
+      <always_on>1</always_on>
+      <update_rate>100</update_rate>
+      <force_torque>
+        <frame>sensor</frame>
+        <measure_direction>parent_to_child</measure_direction>
+      </force_torque>
+      <pose>0.0 0.0 0.022299999999999986 0.0 -0.0 -2.094395210586932</pose>
+      <plugin name="right_foot_rear_ft_plugin" filename="libgazebo_yarp_forcetorque.so">
+        <yarpConfigurationFile>model://iCub/conf_icub3/FT/gazebo_icub_right_foot_rear_ft.ini</yarpConfigurationFile>
+      </plugin>
+    </sensor>
+  </gazebo>
+  <sensor name="ft_2" type="force_torque">
+    <parent joint="ft_2"/>
+    <force_torque>
+      <frame>sensor</frame>
+      <measure_direction>parent_to_child</measure_direction>
+    </force_torque>
+    <origin rpy="0.0 -0.0 -2.094395210586932" xyz="0.0 0.0 0.022299999999999986"/>
+  </sensor>
+</robot>
