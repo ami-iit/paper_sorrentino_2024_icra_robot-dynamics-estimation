@@ -6,6 +6,32 @@
       <inertia ixx="0.004051489764137304" ixy="-2.0525354991945143e-06" ixz="-1.200186769383287e-05" iyy="0.004466379288694287" iyz="0.00011702292411912923" izz="0.002537512875376926"/>
     </inertial>
   </link>
+  <link name="base_imu_0"/>
+  <joint name="base_imu_0_fixed_joint" type="fixed">
+    <origin xyz="0.0354497 0.00639688 0.060600" rpy="1.5708 0 -1.5708"/>
+    <parent link="base_link"/>
+    <child link="base_imu_0"/>
+    <dynamics damping="0.1"/>
+  </joint>
+  <gazebo>
+    <plugin name="ergocub_yarp_gazebo_plugin_IMU" filename="libgazebo_yarp_imu.so">
+      <yarpConfigurationFile>model://ergoCub/conf/gazebo_ergocub_waist_inertial.ini</yarpConfigurationFile>
+    </plugin>
+  </gazebo>
+  <gazebo reference="base_link">
+    <sensor name="base_imu_0" type="imu">
+      <always_on>1</always_on>
+      <update_rate>100</update_rate>
+      <pose>0.0354497 0.00639688 0.060600 1.5708 0 -1.5708</pose>
+      <plugin name="ergocub_yarp_gazebo_plugin_IMU" filename="libgazebo_yarp_imu.so">
+        <yarpConfigurationFile>model://ergoCub/conf/gazebo_ergocub_waist_inertial.ini</yarpConfigurationFile>
+      </plugin>
+    </sensor>
+  </gazebo>
+  <sensor name="base_imu_0" type="accelerometer">
+    <parent link="base_link"/>
+    <origin rpy="1.5708 0 -1.5708" xyz="0.0354497 0.00639688 0.060600"/>
+  </sensor>
   <link name="link_1">
     <inertial>
       <origin xyz="-0.004106499999999999 -0.02810980000000001 -0.0008360000000000034" rpy="0 0 -1.5707963267948966"/>
@@ -16,7 +42,7 @@
   <joint name="joint_1" type="revolute">
     <origin xyz="0.0216 -0.040549999999999996 0" rpy="0 0 0"/>
     <axis xyz="0.0 -1.0 0.0"/>
-    <parent link="base_link"/>
+    <parent link="base_imu_0"/>
     <child link="link_1"/>
     <limit effort="50000" lower="-0.7853981633974483" upper="2.007128639793479" velocity="120.0"/>
     <dynamics damping="2.0" friction="0.0"/>
